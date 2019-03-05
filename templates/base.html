@@ -1,0 +1,88 @@
+{%load staticfiles%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{%block head_title%}Django 2.1{%endblock head_title%}</title>
+    <link rel="stylesheet" href="{%static 'base.css'%}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">-->
+
+<body>
+
+
+<!-- navbar and links -->
+<nav class=class="navbar navbar-dark navbar-fixed-top" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">BlogLog</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{%url 'posts:list'%}"><i class="fa fa-home"></i> Home</a></li>
+      <li><a href="{%url 'posts:create'%}"><i class="fa fa-plus"></i> CreatePost</a></li>
+      <li><a href="{%url 'posts:about'%}"><i class="fa fa-rss"></i> AboutUs</a></li>
+      <li><a href="{%url 'posts:contact'%}"><i class="fa fa-user"></i> ContactUs</a></li>
+    </ul>
+    <form class="navbar-form navbar-left" action="" method="get">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search Your Post" name="q" value="{{request.GET.q}}">
+      </div>
+      <button type="submit" class="btn btn-default">Search <i class="fa fa-search"></i></button>
+    </form>
+    <ul class="nav navbar-nav mr-auto">
+      {%if  user.is_authenticated%}
+        <li><a href="{%url 'users:profile'%}"><i class="fa fa-user-circle"></i>{{user.username|capfirst}}</a></li>
+        <!-- request.user or user.username worked as same|capfirst is for first lttr shud b capital-->
+        <li><a href="{%url 'users:logout'%}"><i class="fa fa-sign-out"></i> LogOut</a></li>
+        <li><a href="{%url 'users:password_change'%}"><i class="fa fa-key"></i> ChangePassword</a></li>
+
+        {%else%}
+        <li><a href="{%url 'users:login'%}"><i class="fa fa-sign-in"></i> LogIn</a></li>
+        <li><a href="{%url 'users:register'%}"><i class="fa fa-users"></i> Register</a></li>
+      {%endif%}
+
+      {%if user.is_superuser%}
+        <li><a href="{%url 'admin:index'%}"><i class="fa fa-android"></i> Admin</a></li>
+
+      {%elif user.is_staff%}
+        <li><a href="{%url 'posts:readme'%}"><i class="fa fa-male"></i> Staff</a></li>
+      {%endif%}
+    </ul>
+  </div>
+</nav>
+</nav>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.2';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+{%include 'messages_display.html'%}
+
+
+
+
+<div class="container">
+{%block content%}
+{%endblock content%}
+</div>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+
+</body>
+</html>
+

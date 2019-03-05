@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load staticfiles%}
+{%block content%}
+<style>
+.bg-grey {
+  background-color: #f6f6f6;
+}
+</style>
+<div class="jumbotron">
+<div class="container-fluid">
+  <h2>BlogLog</h2>
+  <h4>About BlogLog</h4>
+  <p>Bloglog is a blogging site where you can share your thoughts,ideas & innovations with any other people!:)</p>
+    <a href="{%url 'posts:list'%}"><button class="btn btn-primary btn-lg">Get in Touch</button></a>
+</div>
+
+<!--<div class="container-fluid bg-grey">
+  <h2>Our Values</h2>
+  <h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>
+  <p><strong>VISION:</strong> Our vision Lorem ipsum..
+</div>-->
+</div>
+{%endblock%}

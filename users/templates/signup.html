@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+{%block content%}
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> material css link -->
+<div class="container">
+<div class="row">
+<div class="col-md-4">
+<div class="conent-section">
+    <form method="POST"">
+    {%csrf_token%}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">
+        Register Here!
+        </legend>
+        {{form|crispy}}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-primary">SignUp</button>
+    </div>
+    </form>
+    <div class="border-top pt3">
+        <small class="text-muted">
+            Already registered?
+            <a href="{%url 'users:login'%}" class="ml-2">LogIn</a>
+
+        </small>
+        <hr/>
+    </div>
+</div>
+</div>
+</div>
+</div>
+{%endblock content%}

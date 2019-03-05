@@ -1,0 +1,64 @@
+{%extends 'base.html'%}
+
+{%load staticfiles%}
+{%load crispy_forms_tags%}
+{%block content%}
+
+<!--<div class="content-section">
+<div class="media">
+<img src="{{user.profile.image.url}}" class="rounded-circle account-img">
+<div class="media-body">
+ <h2 class="account-heading">{{user.username}}</h2>
+ <p class="secondary">{{user.email}}</p>
+</div>
+</div>
+</div>
+-->
+
+
+<!--<link rel="stylesheet" href="{%static 'css/bootstrap.css'%}" type="text/css" >
+
+
+
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />-->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="{%static 'css/profile.css'%}" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<div class="card">
+  <img src="{{user.profile.image.url}}" alt="Shubh" style="width:100%"  >
+  <h1>{{user.username}}</h1>
+  <p class="title"> Founder of BlogLog</p>
+  <p>Himalayan University</p>
+  <a href="#" style="text-decoration: none;font-size: 22px;color: black;"><i class="fa fa-dribbble"></i></a>
+  <a href="#"style="text-decoration: none;font-size: 22px;color: black;"><i class="fa fa-twitter"></i></a>
+  <a href="#"style="text-decoration: none;font-size: 22px;color: black;"><i class="fa fa-linkedin"></i></a>
+  <a href="#"style="text-decoration: none;font-size: 22px;color: black;"><i class="fa fa-facebook"></i></a>
+
+    <p><a href="{%url 'users:edit_profile'%}"><button class="btn btn-success" style=" border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #grey;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;">Edit Your Profile</button></a></p>
+
+    <p><a href="{%url 'posts:contact'%}"><button class="btn btn-success" style=" border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;">Contact</button></a></p>
+
+</div>
+
+
+{%endblock content%}

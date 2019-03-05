@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+
+{%block content%}
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> material css link -->
+<div class="row ">
+<div class="col-md-4">
+<div class="jumbotron">
+    <form method="POST"">
+    {%csrf_token%}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">
+        Edit Your Profile
+        </legend>
+        {{form|crispy}}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Edit</button>
+    </div>
+    </form>
+
+
+</div>
+</div>
+</div>
+{%endblock content%}

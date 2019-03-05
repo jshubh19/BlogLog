@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{%load socialaccount%}
+{%providers_media_js%}
+{%load crispy_forms_tags%}
+
+{%block content%}
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> material css link -->
+<div class="row ">
+<div class="col-md-4">
+<div class="jumbotron">
+    <form method="POST"">
+    {%csrf_token%}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">
+        LogIn Here!
+        </legend>
+        {{form|crispy}}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-primary">LogIn</button>
+        <small class="text-muted ml-2"><a href="{%url 'users:password_reset'%}">Forgot password ?</a></small>
+        <!-- here 'users:password_reset is name of url not url' -->
+    </div>
+    </form>
+    <div class="border-top pt3">
+        <small class="text-muted">
+            Not registered?
+            <a href="{%url 'users:register'%}" class="ml-2">Register Here</a>
+
+        </small>
+    </div>
+    <div class="border-top pt3">
+
+       <strong> Or login with </strong>
+        <hr/>
+        <a href="{%url 'account_login'%}"><button class="btn btn-primary"> Google</button></a> &nbsp;&nbsp;
+        <a href="{%url 'account_login'%}"><button class="btn btn-primary"> Facebook</button></a>
+
+    </div>
+</div>
+</div>
+</div>
+{%endblock content%}

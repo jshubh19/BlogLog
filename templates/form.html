@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+{%load crispy_forms_tags%}
+{%load staticfiles%}
+
+{%block content%}
+{{block.super}}
+<div class="container">
+<div class="col-sm-6 col-sm-offset-3">
+<form method="POST" action="" enctype="multipart/form-data"> {%csrf_token%}
+	<div class="form-group">
+		<label class="control-label">Create Post</label>
+		{{form|crispy}}
+        <input type="submit" value="post" class="btn btn-success">
+	</div>
+</div>
+</div>
+<script src="{%static 'slug.js'%}"></script>
+{%endblock content%}
+
+
+
